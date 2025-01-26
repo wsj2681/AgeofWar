@@ -2,6 +2,7 @@
 #include "SFML/Graphics.hpp"
 #include <stack>
 #include <vector>
+#include <string>
 
 class Scene
 {
@@ -39,7 +40,9 @@ protected:
 
 	sf::RenderWindow* window;
 	std::stack<Scene*>* scenes;
-	std::vector<sf::Drawable*> objects;
+
+	// first : Drawable object, second : object name
+	std::vector<std::pair<sf::Drawable*, std::string>> objects;
 
 	bool quit = false;
 

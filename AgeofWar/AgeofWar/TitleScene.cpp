@@ -1,5 +1,6 @@
 #include "TitleScene.h"
 #include "LobbyScene.h"
+#include <iostream>
 
 using namespace sf;
 
@@ -22,7 +23,15 @@ void TitleScene::Init()
 	auto* text = new Text("Title Scene", *font, 50);
 	text->setPosition(400, 300);
 
-	objects.push_back(text);
+	objects.push_back({text, "TEXT_object"});
+
+	for (auto& object : objects)
+	{
+		if (object.second.substr(0, 4) == "TEXT")
+		{
+			std::cout << "TEXT object Created" << std::endl;
+		}
+	}
 
 }
 

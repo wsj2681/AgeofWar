@@ -20,7 +20,7 @@ void LobbyScene::Init()
 	auto* text = new Text("Lobby Scene", *font, 50);
 	text->setPosition(400, 300);
 
-	objects.push_back(text);
+	objects.push_back({text, "TEXT_object"});
 }
 
 void LobbyScene::UpdateInput(sf::Event& event)
