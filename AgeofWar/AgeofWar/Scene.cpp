@@ -10,7 +10,7 @@ void Scene::Render()
 {
 	for (auto& object : objects)
 	{
-		window->draw(*object);
+		window->draw(*object.first);
 	}
 }
 
@@ -28,7 +28,7 @@ Scene::~Scene()
 {
 	for (auto& object : objects)
 	{
-		delete object;
+		delete object.first;
 	}
 	objects.clear();
 }
