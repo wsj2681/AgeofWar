@@ -33,6 +33,13 @@ void TitleScene::Init()
 		}
 	}
 
+	Object* button = new Object();
+	button->setSize(Vector2f(100, 100));
+	button->setFillColor(Color::White);
+	button->setPosition(400, 400);
+
+	objects.push_back({ button, "OBJECT_object" });
+
 }
 
 void TitleScene::UpdateInput(sf::Event& event)
@@ -41,8 +48,8 @@ void TitleScene::UpdateInput(sf::Event& event)
 	{
 	case Event::MouseButtonPressed:
 	{
-		Scene* lobbyScene = new LobbyScene(scenes, window);
-		scenes->push(lobbyScene);
+		//Scene* lobbyScene = new LobbyScene(scenes, window);
+		//scenes->push(lobbyScene);
 	}
 	default:
 		break;
@@ -55,6 +62,15 @@ void TitleScene::Update(const float& deltaTime)
 
 void TitleScene::Update(const sf::Vector2f& mousePosition)
 {
+	for (auto& [ptr, value] : objects)
+	{
+		auto obj = dynamic_cast<Object*>(ptr);
+		if (obj)
+		{
+			obj->setFillColor(obj->isPressed(mousePosition) ? Color::Red : Color::White);
+		}
+	}
+
 }
 
 void TitleScene::Render()
